@@ -18,4 +18,4 @@ const fetchStudent = () => async (dispatch) => {
   }
 };
 
-export default fetchStudent;
+export { fetchStudent };
