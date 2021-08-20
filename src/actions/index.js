@@ -1,3 +1,21 @@
-export const FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST';
-export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
-export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+import {
+  FETCH_STUDENTS_REQUEST,
+  FETCH_STUDENTS_SUCCESS,
+  FETCH_STUDENTS_FAILURE
+} from './action';
+
+const baseURL = 'https://api.hatchways.io/assessment/students';
+
+const fetchStudent = () => async (dispatch) => {
+  dispatch({ type: FETCH_STUDENTS_REQUEST});
+
+  try {
+    const response = await fetch(baseURL);
+    const data = await response.json();
+    dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: FETCH_STUDENTS_FAILURE, payload: error });
+  }
+};
+
+export default fetchStudent;
