@@ -1,49 +1,91 @@
-import { Flex, GridItem, Text } from '@chakra-ui/react';
+import { GridItem, Text, Grid, Box, Divider } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import { fetchStudent } from '../actions/index';
 import { Loader } from '../components/Loading';
 import { Error } from '../components/Error';
+import { Search } from '../components/Search';
 
 const Students = () => {
   const dispatch = useDispatch();
   const { students, loading, error } = useSelector((state) => state.students);
 
+  const handleChange = (students) => {
+    dispatch(fetchStudent(students));
+  };
+
   useEffect(() => {
     dispatch(fetchStudent());
   },[dispatch]);
 
-  const renderStudents = () => {
-    if (loading) {
-      return (
-        <GridItem colSpan={4}>
-          <Loader />
-        </GridItem>
-      );
-    }
-    if (error) {
-      return (
-        <GridItem colSpan={4}>
-          <Error />
-        </GridItem>
-      );
-    }
-
-    return students.map((student) => (
-      <Card style={{ widht: '21rem' }} className="bg-dark text-white mt-3" key={student.id}> 
-      <Card.Img />
-    
-    </Card>
-      )
-    )
+  if (loading) {
+    return (
+      <GridItem colSpan={4}>
+        <Loader />
+      </GridItem>
+    );
+  }
+  if (error) {
+    return (
+      <GridItem colSpan={4}>
+        <Error />
+      </GridItem>
+    );
   }
 
   return (
-    <Flex wrap="wrap" display="flex" w="100%">
-      {renderStudents()}
-    </Flex>
-  );
+    <Container className="card">
+      {/* <Students filterChange={handleChange} /> */}
+      {
+        students.map((student) => (
+          
+            <Grid templateColumns="repeat(3, 1fr)" key={student.id}>
+              <GridItem>
+                <Box w="50%">
+                  <Image src={student.pic} className="img-fluid img-thumbnail roundedCircle image" alt="student picture" />
+                </Box>
+              </GridItem>
+              <GridItem colSpan={2}>
+                <Box w="100%">
+                  <Text 
+                    fontSize="4xl" 
+                    color="black"
+                  >
+                    {student.firstName}
+                    {' '}
+                    {student.lastName}
+                  </Text>
+                  <Text>
+                      Email: 
+                      {' '}
+                      {student.email}
+                  </Text>
+                  <Text>
+                    Company: 
+                    {' '}
+                    {student.company}
+                  </Text>
+                  <Text>
+                    Skills: 
+                    {' '}
+                    {student.skill}
+                  </Text>
+                  <Text>
+                    Average: 
+                    {' '}
+                    {(student.grades.reduce((a,b) => a + parseFloat(b),0) / student.grades.length)}
+                  </Text>
+                </Box>
+              </GridItem>
+              <Divider className="Divider"/>
+            </Grid>
+        ))
+      }
+    </Container>
+  )
+  
 };
 
 export default Students;
+                                               

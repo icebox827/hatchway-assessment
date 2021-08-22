@@ -12,7 +12,7 @@ const fetchStudent = () => async (dispatch) => {
   try {
     const response = await fetch(baseURL);
     const data = await response.json();
-    dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: data });
+    dispatch({ type: FETCH_STUDENTS_SUCCESS, payload: data.students });
   } catch (error) {
     dispatch({ type: FETCH_STUDENTS_FAILURE, payload: error });
   }

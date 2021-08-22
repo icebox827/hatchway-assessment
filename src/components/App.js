@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
-import Student from '../containers/Student';
+import Routes from './Routes';
+
 
 function App() {
   return (
     <ChakraProvider>
-      <Student />
+      <Routes />
     </ChakraProvider>
   );
 }
