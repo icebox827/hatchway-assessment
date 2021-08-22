@@ -37,10 +37,16 @@ body {
 .switch {
   position: relative;
   left: 35rem;
-  bottom: 20rem;
+  bottom: 9rem;
 }
 
-.switch span {
+.toggle {
   font-weight: 800;
   font-size: x-large;
+}
+
+.notes {
+  position: relative;
+  right: 34rem;
+  top: 7rem;
 }

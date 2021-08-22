@@ -5,11 +5,11 @@ import { Container, Image } from 'react-bootstrap';
 import { fetchStudent } from '../actions/index';
 import { Loader } from '../components/Loading';
 import { Error } from '../components/Error';
-import Expandables from '../components/Expandables';
 
 const Students = () => {
   const dispatch = useDispatch();
   const [searchName, setSearchName] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const { students, loading, error } = useSelector((state) => state.students);
 
   useEffect(() => {
@@ -85,7 +85,53 @@ const Students = () => {
                     {(student.grades.reduce((a,b) => a + parseFloat(b),0) / student.grades.length)}
                   </Text>
                 </Box>
-                <Expandables />
+                <div className="switch">
+                  <button
+                    className="toggle"
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    +
+                  </button>
+                  { isOpen && <div className="content">
+                    <ul className="notes">
+                      <li>
+                        Test 1:
+                        {' '}
+                        {students.grades}
+                      </li>
+                      <li>
+                        Test 2:
+                        {' '}
+                      </li>
+                      <li>
+                        Test 3:
+                        {' '}
+                      </li>
+                      <li>
+                        Test 4:
+                        {' '}
+                      </li>
+                      <li>
+                        Test 5:
+                        {' '}
+                      </li>
+                      <li>
+                        Test 6:
+                        {' '}
+                      </li>
+                      <li>
+                        Test 7:
+                        {' '}
+                      </li>
+                      <li>
+                        Test 8:
+                        {' '}
+                      </li>
+                    </ul>
+                    </div>
+                  }
+                </div>
+                {/* <Expandables /> */}
               </GridItem>
               <Divider className="Divider"/>
             </Grid>
