@@ -94,39 +94,9 @@ const Students = () => {
                   </button>
                   { isOpen && <div className="content">
                     <ul className="notes">
-                      <li>
-                        Test 1:
-                        {' '}
-                        {students.grades}
-                      </li>
-                      <li>
-                        Test 2:
-                        {' '}
-                      </li>
-                      <li>
-                        Test 3:
-                        {' '}
-                      </li>
-                      <li>
-                        Test 4:
-                        {' '}
-                      </li>
-                      <li>
-                        Test 5:
-                        {' '}
-                      </li>
-                      <li>
-                        Test 6:
-                        {' '}
-                      </li>
-                      <li>
-                        Test 7:
-                        {' '}
-                      </li>
-                      <li>
-                        Test 8:
-                        {' '}
-                      </li>
+                      {(student.grades.map((name, index) => {
+                        return <li key={index}>Test {index + 1}: {name}%</li>;
+                      }))}
                     </ul>
                     </div>
                   }
