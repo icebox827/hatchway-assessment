@@ -33,3 +33,14 @@ body {
   margin-right: auto;
   margin-top: 15px;
 }
+
+.switch {
+  position: relative;
+  left: 35rem;
+  bottom: 20rem;
+}
+
+.switch span {
+  font-weight: 800;
+  font-size: x-large;
+}

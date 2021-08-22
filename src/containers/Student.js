@@ -5,6 +5,7 @@ import { Container, Image } from 'react-bootstrap';
 import { fetchStudent } from '../actions/index';
 import { Loader } from '../components/Loading';
 import { Error } from '../components/Error';
+import Expandables from '../components/Expandables';
 
 const Students = () => {
   const dispatch = useDispatch();
@@ -84,6 +85,7 @@ const Students = () => {
                     {(student.grades.reduce((a,b) => a + parseFloat(b),0) / student.grades.length)}
                   </Text>
                 </Box>
+                <Expandables />
               </GridItem>
               <Divider className="Divider"/>
             </Grid>
