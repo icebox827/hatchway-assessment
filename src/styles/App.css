@@ -50,3 +50,7 @@ body {
   right: 34rem;
   top: 7rem;
 }
+
+.hide {
+  display: none;
+}

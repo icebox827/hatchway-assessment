@@ -90,7 +90,12 @@ const Students = () => {
                     className="toggle"
                     onClick={() => setIsOpen(!isOpen)}
                   >
-                    +
+                    <span className={isOpen ? "hide" : "show"}>
+                      +
+                    </span>
+                    <span className={!isOpen ? "hide" : "show"}>
+                      -
+                    </span>
                   </button>
                   { isOpen && <div className="content">
                     <ul className="notes">
