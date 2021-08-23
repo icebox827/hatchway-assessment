@@ -10,7 +10,13 @@ const Students = () => {
   const dispatch = useDispatch();
   const [searchName, setSearchName] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [tag, setTag] = useState('');
   const { students, loading, error } = useSelector((state) => state.students);
+
+  const handleSubmit = (e) => {
+    e.prevent.default();
+    setTag(e.target.value)
+  };
 
   useEffect(() => {
     dispatch(fetchStudent());
@@ -36,8 +42,13 @@ const Students = () => {
       <Input 
         type="search" 
         placeholder="Search by name..."  
-        className="search" 
-        onChange={e => {setSearchName(e.target.value)}} 
+        onChange={e => setSearchName(e.target.value)} 
+      />
+      <Input 
+        type="search" 
+        className="searchTag"
+        placeholder="Search by tag..."  
+        onChange={e => setSearchName(e.target.value)} 
       />
       {
         students.filter((val) => {
@@ -106,9 +117,19 @@ const Students = () => {
                     </div>
                   }
                 </div>
-                {/* <Expandables /> */}
+                <h3 className="tag">{tag}</h3>
+                <form onSubmit={handleSubmit}> 
+                  <Input 
+                    type="text"
+                    name="name" 
+                    placeholder="Add tag" 
+                    w="40%" 
+                    onChange={e => setTag(e.target.value)}
+                  />
+                </form>
+                <Divider w="100%"/>
               </GridItem>
-              <Divider className="Divider"/>
+                <Divider w="100%"/>
             </Grid>
         ))
       }

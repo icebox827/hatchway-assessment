@@ -17,14 +17,6 @@ body {
   border: 1px solid gray;
 }
 
-.search {
-  width: 100%;
-}
-
-.divider {
-  width: 100%;
-}
-
 .image {
   width: 80%;
   border: 1px solid gray;
@@ -53,4 +45,8 @@ body {
 
 .hide {
   display: none;
+}
+
+.searchTag {
+  margin-top: 5px;
 }
